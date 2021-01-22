@@ -10,17 +10,19 @@
 - チーム共有機能（できれば）
 
 ## 開発環境
-    - PHP 8.0
-    - Laravel 6.2
-    - mySQL 8.0
+  
+        - PHP 8.0
+        - Laravel 6.2
+        - mySQL 8.0
 - Laravelのバージョンの選定理由はLTSであることと、情報が手に入りやすいため
 
 ## データベース設計
 - デフォルトのユーザーテーブル
-- tasksテーブル
-    - id
-    - user_id
-    - title
-    - created_at
-    - updated_at
-    - completed_at ?
+- tasksテーブル  
+
+        - id
+        - user_id
+        - title
+        - created_at
+        - updated_at
+        - completed_at ?
