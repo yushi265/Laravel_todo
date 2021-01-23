@@ -19,10 +19,6 @@ ul > li {
   margin-bottom: 5px;
 }
 
-li {
-    list-style:none;
-}
-
 .error {
     font-size: 12px;
     color: tomato;

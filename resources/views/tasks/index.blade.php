@@ -27,7 +27,7 @@
                     <p>
                         <form action="{{ url('/tasks', $task->id)}}" method="post">
                             {{ $task->body }}
-                            <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{{ action('TaskController@edit', $task) }}'">編集</button>
+                            <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{{ action('TaskController@show', $task) }}'">詳細</button>
                             {{ csrf_field() }}
                             {{ method_field('delete') }}
                             <button type="submit" class="btn btn-primary btn-sm" value="{{ $task->id }}">削除</button>
@@ -36,7 +36,7 @@
                 </li>
                 @empty
                 <li>
-                    <p>No task yet</p>
+                    <p>まだタスクはありません</p>
                 </li>
                 @endforelse
             </ul>

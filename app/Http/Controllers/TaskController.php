@@ -52,9 +52,9 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Task $task)
     {
-        //
+        return view('tasks.show')->with('task', $task);
     }
 
     /**
@@ -78,6 +78,7 @@ class TaskController extends Controller
     public function update(TaskRequest $request, Task $task)
     {
         $task->body = $request->body;
+        $task->memo = $request->memo;
         $task->save();
 
         return redirect('tasks');

@@ -14,3 +14,6 @@
 Route::resource('tasks', 'TaskController');
 
 Auth::routes();
+
+Route::post('/tasks/{task}/comments', 'CommentController@store');
+Route::delete('/tasks/{task}/comments/{comment}', 'CommentController@destroy');

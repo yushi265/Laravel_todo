@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTasksTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->string('body');
-            $table->text('memo')->nullable($value = true);
+            $table->unsignedBigInteger('task_id');
+            $table->text('body');
             $table->timestamps();
             $table
-                ->foreign('user_id')
+                ->foreign('task_id')
                 ->references('id')
-                ->on('users')
+                ->on('tasks')
                 ->onDelete('cascade');
         });
     }
@@ -34,6 +33,6 @@ class CreateTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('comments');
     }
 }
