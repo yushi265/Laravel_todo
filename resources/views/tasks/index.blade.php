@@ -9,7 +9,14 @@
                 {{ csrf_field() }}
                 <input type="text" name="body">
                 <input type="submit" value="追加">
-            </form><br>
+            </form>
+            @if ($errors->has('body'))
+                <span class="error">
+                    {{ $errors->first('body') }}
+                </span>
+
+            @endif
+            <br>
         </div>
 
         <div class="all_task">
@@ -18,8 +25,13 @@
                 @forelse ($allTask as $task)
                 <li>
                     <p>
-                        {{ $task->body }}
-                        <a href="{{ action('TaskController@edit', $task) }}">[編集]</a>
+                        <form action="{{ url('/tasks', $task->id)}}" method="post">
+                            {{ $task->body }}
+                            <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{{ action('TaskController@edit', $task) }}'">編集</button>
+                            {{ csrf_field() }}
+                            {{ method_field('delete') }}
+                            <button type="submit" class="btn btn-primary btn-sm" value="{{ $task->id }}">削除</button>
+                        </form>
                     </p>
                 </li>
                 @empty

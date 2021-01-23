@@ -8,12 +8,12 @@
             {{ csrf_field() }}
             {{ method_field('patch')}}
             <input type="text" name="body" placehplder="タスク" value="{{ old('body', $task->body) }}">
+            <input type="submit" value="変更"><br>
             @if ($errors->has('body'))
                 <span class="error">
-                {{ $errors->first('title')}}
+                {{ $errors->first('body')}}
                 </span>
             @endif
-            <input type="submit" value="変更">
        </form>
     </div>
 @else
