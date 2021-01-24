@@ -7,7 +7,7 @@
 ## 実装したい機能
 - ログイン、ログアウト、新規登録、パスワード再設定
 - CRUD操作
-- チーム共有機能（できれば）
+- 検索機能
 
 ## 開発環境
   
@@ -18,11 +18,20 @@
 
 ## データベース設計
 - デフォルトのユーザーテーブル
-- tasksテーブル  
+- tasksテーブル
+  
+        - id, user_id, body, created_at, updated_at
+- commentsテーブル  
 
-        - id
-        - user_id
-        - title
-        - created_at
-        - updated_at
-        - completed_at ?
+        - id, task_id, body, created_at, updated_at
+
+## 工夫した点・苦労した点
+- ルーティングをresourceを使ってすっきりさせた
+- CSRF対策を怠り419エラーに
+- useし忘れで関数が使用できない
+- ルーティングに苦戦
+
+## PHPと比較したLaravelの優位性
+- 認証機能の実装が簡単
+- 様々な関数がすぐに使える
+- レコードを直感的に取り出せる
