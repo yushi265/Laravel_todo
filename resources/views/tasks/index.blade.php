@@ -8,7 +8,7 @@
             <form action="{{ url('/tasks')}}" method="post">
                 {{ csrf_field() }}
                 <input type="text" name="body">
-                <input type="submit" value="追加">
+                <button type="submit" class="btn btn-primary btn-sm">追加</button>
             </form>
             @if ($errors->has('body'))
                 <span class="error">
@@ -20,7 +20,14 @@
         </div>
 
         <div class="all_task">
-            <h1>すべてのタスク</h1>
+            <h1>
+                <form action="{{ url('/tasks/search') }}" method="post">
+                    @csrf
+                    すべてのタスク
+                    <input class="search" type="text" name="search">
+                    <button type="submit" class="btn btn-primary btn-sm">検索</button>
+                </form>
+            </h1>
             <ul>
                 @forelse ($allTask as $task)
                 <li>

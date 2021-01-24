@@ -31,3 +31,7 @@ ul > li {
 .del {
     font-size: 12px;
 }
+
+.search {
+    width: 150px;
+}

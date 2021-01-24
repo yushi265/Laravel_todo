@@ -10,6 +10,11 @@ use App\User;
 
 class TaskController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -95,5 +100,14 @@ class TaskController extends Controller
         $task->delete();
 
         return redirect('tasks');
+    }
+
+    public function search(Request $request) {
+        $this->validate($request, [
+            'search' => 'required'
+        ]);
+        $results = Task::query()->where('body', 'LIKE', "%{$request->search}%")->get();
+
+        return view('tasks.search')->with('results', $results);
     }
 }

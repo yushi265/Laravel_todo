@@ -8,6 +8,10 @@ use App\Comment;
 
 class CommentController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function store(Request $request, Task $task) {
         $this->validate($request,[
             'comment' => 'required|min:3|max:50'
